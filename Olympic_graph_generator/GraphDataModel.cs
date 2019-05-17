@@ -1,30 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+
 namespace Olympic_graph_generator
 {
     public class GraphDataModel
-    {
-
-        public class ItemModel
-        {
-            private string Name { get; set; }
-            private Int64 Data { get; set; }
-            private int Color { get; set; }
-
-            public ItemModel(string name, Int64 data, int color)
-            {
-                Name = name;
-                Data = data;
-                Color = color;
-            }
-            public string GetName()
-            {
-                return Name;
-            }
-            
-        }
-
+    { 
         public string Title { get; set; }
         public string Xaxis { get; set; }
         public string Yaxis { get; set; }
@@ -43,6 +24,11 @@ namespace Olympic_graph_generator
             dataSetList.Add(new ItemModel(name, data, color));
         }
 
+        public ItemModel GetItem(string name)
+        {
+            return (ItemModel) dataSetList.Where(i => i.Name == name);
+        }
+
         public ItemModel GetItemAt(int index)
         {
             return dataSetList.ElementAt(index);
@@ -50,12 +36,26 @@ namespace Olympic_graph_generator
 
         public void RemoveItem(string name)
         {
-            dataSetList.Remove((ItemModel)dataSetList.Where(i => name == i.GetName()));
+            dataSetList.Remove((ItemModel)dataSetList.Where(i => name == i.Name));
         }
 
         public void RemoveItemAt(int index)
         {
             dataSetList.RemoveAt(index);
         }
+
+        public void ChangeItemAt(int index, string name, Int64 data, int color)
+        {
+            ItemModel item = dataSetList.ElementAt(index);
+            item.Name = name;
+            item.Data = data;
+            item.Color = color;
+        }
+
+        public List<ItemModel> GetItemList()
+        {
+            return dataSetList;
+        }
     }
 }
+

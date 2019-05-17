@@ -85,6 +85,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="GraphDataModel.cs" />
+    <Compile Include="ItemModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

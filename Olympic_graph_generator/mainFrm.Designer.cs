@@ -42,14 +42,14 @@
             this.lblPrompt4 = new System.Windows.Forms.Label();
             this.lblPrompt5 = new System.Windows.Forms.Label();
             this.txtTitle = new System.Windows.Forms.TextBox();
-            this.txtData = new System.Windows.Forms.TextBox();
+            this.txtItemData = new System.Windows.Forms.TextBox();
             this.lblPrompt9 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtXaxis = new System.Windows.Forms.TextBox();
             this.lblPrompt6 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtYaxis = new System.Windows.Forms.TextBox();
             this.lblPrompt7 = new System.Windows.Forms.Label();
             this.grpItem = new System.Windows.Forms.GroupBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtItemName = new System.Windows.Forms.TextBox();
             this.lblPromp8 = new System.Windows.Forms.Label();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.lblPrompt10 = new System.Windows.Forms.Label();
@@ -124,6 +124,7 @@
             this.lstData.Name = "lstData";
             this.lstData.Size = new System.Drawing.Size(313, 316);
             this.lstData.TabIndex = 2;
+            this.lstData.SelectedIndexChanged += new System.EventHandler(this.lstData_SelectedIndexChanged);
             // 
             // lblPrompt2
             // 
@@ -202,12 +203,12 @@
             this.txtTitle.Size = new System.Drawing.Size(160, 20);
             this.txtTitle.TabIndex = 10;
             // 
-            // txtData
+            // txtItemData
             // 
-            this.txtData.Location = new System.Drawing.Point(77, 47);
-            this.txtData.Name = "txtData";
-            this.txtData.Size = new System.Drawing.Size(207, 20);
-            this.txtData.TabIndex = 12;
+            this.txtItemData.Location = new System.Drawing.Point(77, 47);
+            this.txtItemData.Name = "txtItemData";
+            this.txtItemData.Size = new System.Drawing.Size(207, 20);
+            this.txtItemData.TabIndex = 12;
             // 
             // lblPrompt9
             // 
@@ -219,12 +220,12 @@
             this.lblPrompt9.Text = "Data:";
             this.lblPrompt9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // textBox1
+            // txtXaxis
             // 
-            this.textBox1.Location = new System.Drawing.Point(261, 63);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(160, 20);
-            this.textBox1.TabIndex = 14;
+            this.txtXaxis.Location = new System.Drawing.Point(261, 63);
+            this.txtXaxis.Name = "txtXaxis";
+            this.txtXaxis.Size = new System.Drawing.Size(160, 20);
+            this.txtXaxis.TabIndex = 14;
             // 
             // lblPrompt6
             // 
@@ -236,12 +237,12 @@
             this.lblPrompt6.Text = "X-axis:";
             this.lblPrompt6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // textBox2
+            // txtYaxis
             // 
-            this.textBox2.Location = new System.Drawing.Point(261, 89);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(160, 20);
-            this.textBox2.TabIndex = 16;
+            this.txtYaxis.Location = new System.Drawing.Point(261, 89);
+            this.txtYaxis.Name = "txtYaxis";
+            this.txtYaxis.Size = new System.Drawing.Size(160, 20);
+            this.txtYaxis.TabIndex = 16;
             // 
             // lblPrompt7
             // 
@@ -260,9 +261,9 @@
             this.grpItem.Controls.Add(this.btnChangeColor);
             this.grpItem.Controls.Add(this.lblColorBox);
             this.grpItem.Controls.Add(this.lblPrompt10);
-            this.grpItem.Controls.Add(this.textBox3);
+            this.grpItem.Controls.Add(this.txtItemName);
             this.grpItem.Controls.Add(this.lblPromp8);
-            this.grpItem.Controls.Add(this.txtData);
+            this.grpItem.Controls.Add(this.txtItemData);
             this.grpItem.Controls.Add(this.lblPrompt9);
             this.grpItem.Location = new System.Drawing.Point(184, 115);
             this.grpItem.Name = "grpItem";
@@ -271,12 +272,12 @@
             this.grpItem.TabStop = false;
             this.grpItem.Text = "Item";
             // 
-            // textBox3
+            // txtItemName
             // 
-            this.textBox3.Location = new System.Drawing.Point(77, 18);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(207, 20);
-            this.textBox3.TabIndex = 14;
+            this.txtItemName.Location = new System.Drawing.Point(77, 18);
+            this.txtItemName.Name = "txtItemName";
+            this.txtItemName.Size = new System.Drawing.Size(207, 20);
+            this.txtItemName.TabIndex = 14;
             // 
             // lblPromp8
             // 
@@ -374,9 +375,9 @@
             this.Controls.Add(this.btnCreate);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.grpItem);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txtYaxis);
             this.Controls.Add(this.lblPrompt7);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtXaxis);
             this.Controls.Add(this.lblPrompt6);
             this.Controls.Add(this.txtTitle);
             this.Controls.Add(this.lblPrompt5);
@@ -417,14 +418,14 @@
         private System.Windows.Forms.Label lblPrompt4;
         private System.Windows.Forms.Label lblPrompt5;
         private System.Windows.Forms.TextBox txtTitle;
-        private System.Windows.Forms.TextBox txtData;
+        private System.Windows.Forms.TextBox txtItemData;
         private System.Windows.Forms.Label lblPrompt9;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtXaxis;
         private System.Windows.Forms.Label lblPrompt6;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtYaxis;
         private System.Windows.Forms.Label lblPrompt7;
         private System.Windows.Forms.GroupBox grpItem;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtItemName;
         private System.Windows.Forms.Label lblPromp8;
         private System.Windows.Forms.Button btnChangeColor;
         private System.Windows.Forms.Label lblColorBox;
