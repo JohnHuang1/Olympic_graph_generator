@@ -36,9 +36,9 @@
             this.lstData = new System.Windows.Forms.ListBox();
             this.lblPrompt2 = new System.Windows.Forms.Label();
             this.lblTitle = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblYaxis = new System.Windows.Forms.Label();
             this.lblPrompt3 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lblXaxis = new System.Windows.Forms.Label();
             this.lblPrompt4 = new System.Windows.Forms.Label();
             this.lblPrompt5 = new System.Windows.Forms.Label();
             this.txtTitle = new System.Windows.Forms.TextBox();
@@ -145,15 +145,15 @@
             this.lblTitle.TabIndex = 4;
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label1
+            // lblYaxis
             // 
-            this.label1.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(560, 41);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(106, 23);
-            this.label1.TabIndex = 6;
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblYaxis.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lblYaxis.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblYaxis.Location = new System.Drawing.Point(560, 41);
+            this.lblYaxis.Name = "lblYaxis";
+            this.lblYaxis.Size = new System.Drawing.Size(106, 23);
+            this.lblYaxis.TabIndex = 6;
+            this.lblYaxis.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblPrompt3
             // 
@@ -165,15 +165,15 @@
             this.lblPrompt3.Text = "x-axis:";
             this.lblPrompt3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label3
+            // lblXaxis
             // 
-            this.label3.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(722, 41);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(110, 23);
-            this.label3.TabIndex = 8;
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblXaxis.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lblXaxis.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblXaxis.Location = new System.Drawing.Point(722, 41);
+            this.lblXaxis.Name = "lblXaxis";
+            this.lblXaxis.Size = new System.Drawing.Size(110, 23);
+            this.lblXaxis.TabIndex = 8;
+            this.lblXaxis.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblPrompt4
             // 
@@ -208,7 +208,6 @@
             this.txtData.Name = "txtData";
             this.txtData.Size = new System.Drawing.Size(207, 20);
             this.txtData.TabIndex = 12;
-            this.txtData.TextChanged += new System.EventHandler(this.txtData_TextChanged);
             // 
             // lblPrompt9
             // 
@@ -219,7 +218,6 @@
             this.lblPrompt9.TabIndex = 11;
             this.lblPrompt9.Text = "Data:";
             this.lblPrompt9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lblPrompt9.Click += new System.EventHandler(this.lblPrompt8_Click);
             // 
             // textBox1
             // 
@@ -227,7 +225,6 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(160, 20);
             this.textBox1.TabIndex = 14;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // lblPrompt6
             // 
@@ -238,7 +235,6 @@
             this.lblPrompt6.TabIndex = 13;
             this.lblPrompt6.Text = "X-axis:";
             this.lblPrompt6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblPrompt6.Click += new System.EventHandler(this.label2_Click);
             // 
             // textBox2
             // 
@@ -300,6 +296,7 @@
             this.btnUpdate.TabIndex = 18;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // lblPrompt10
             // 
@@ -319,7 +316,6 @@
             this.lblColorBox.Name = "lblColorBox";
             this.lblColorBox.Size = new System.Drawing.Size(25, 25);
             this.lblColorBox.TabIndex = 16;
-            this.lblColorBox.Click += new System.EventHandler(this.lblColorBox_Click);
             // 
             // btnChangeColor
             // 
@@ -358,6 +354,7 @@
             this.btnAddItem.TabIndex = 20;
             this.btnAddItem.Text = "Add Item";
             this.btnAddItem.UseVisualStyleBackColor = true;
+            this.btnAddItem.Click += new System.EventHandler(this.btnAddItem_Click);
             // 
             // btnSave
             // 
@@ -383,9 +380,9 @@
             this.Controls.Add(this.lblPrompt6);
             this.Controls.Add(this.txtTitle);
             this.Controls.Add(this.lblPrompt5);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.lblXaxis);
             this.Controls.Add(this.lblPrompt4);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblYaxis);
             this.Controls.Add(this.lblPrompt3);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.lblPrompt2);
@@ -414,9 +411,9 @@
         private System.Windows.Forms.ListBox lstData;
         private System.Windows.Forms.Label lblPrompt2;
         private System.Windows.Forms.Label lblTitle;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblYaxis;
         private System.Windows.Forms.Label lblPrompt3;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblXaxis;
         private System.Windows.Forms.Label lblPrompt4;
         private System.Windows.Forms.Label lblPrompt5;
         private System.Windows.Forms.TextBox txtTitle;
