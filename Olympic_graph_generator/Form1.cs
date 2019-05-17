@@ -31,7 +31,7 @@ namespace Olympic_graph_generator
         {
             mainFrm mainFrm = new mainFrm();
             mainFrm.Show();
-            Close();
+            this.Hide();
         }
     }
 }

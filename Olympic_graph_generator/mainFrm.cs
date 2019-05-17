@@ -12,34 +12,29 @@ namespace Olympic_graph_generator
 {
     public partial class mainFrm : Form
     {
+        GraphDataModel graphData = new GraphDataModel();
         public mainFrm()
         {
             InitializeComponent();
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void btnUpdate_Click(object sender, EventArgs e)
         {
-
+            string title = txtTitle.Text;
+            string y = txtYaxis.Text;
+            string x = txtXaxis.Text;
+            lblTitle.Text = title;
+            graphData.Title = title;
+            lblXaxis.Text = x;
+            graphData.Xaxis = x;
+            lblYaxis.Text = y;
+            graphData.Yaxis = y;
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void btnAddItem_Click(object sender, EventArgs e)
         {
-
+            if(txt)
         }
 
-        private void lblPrompt8_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtData_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblColorBox_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
