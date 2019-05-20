@@ -49,16 +49,18 @@
             this.txtYaxis = new System.Windows.Forms.TextBox();
             this.lblPrompt7 = new System.Windows.Forms.Label();
             this.grpItem = new System.Windows.Forms.GroupBox();
+            this.btnAddItem = new System.Windows.Forms.Button();
+            this.lblColorName = new System.Windows.Forms.Label();
+            this.btnChangeColor = new System.Windows.Forms.Button();
+            this.lblColorBox = new System.Windows.Forms.Label();
+            this.lblPrompt10 = new System.Windows.Forms.Label();
             this.txtItemName = new System.Windows.Forms.TextBox();
             this.lblPromp8 = new System.Windows.Forms.Label();
             this.btnUpdate = new System.Windows.Forms.Button();
-            this.lblPrompt10 = new System.Windows.Forms.Label();
-            this.lblColorBox = new System.Windows.Forms.Label();
-            this.btnChangeColor = new System.Windows.Forms.Button();
-            this.lblColorName = new System.Windows.Forms.Label();
             this.btnCreate = new System.Windows.Forms.Button();
-            this.btnAddItem = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
+            this.btnDeleteItem = new System.Windows.Forms.Button();
+            this.btnCancelItem = new System.Windows.Forms.Button();
             this.grpGraphChoices.SuspendLayout();
             this.grpItem.SuspendLayout();
             this.SuspendLayout();
@@ -150,7 +152,7 @@
             // 
             this.lblYaxis.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.lblYaxis.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblYaxis.Location = new System.Drawing.Point(560, 41);
+            this.lblYaxis.Location = new System.Drawing.Point(725, 41);
             this.lblYaxis.Name = "lblYaxis";
             this.lblYaxis.Size = new System.Drawing.Size(106, 23);
             this.lblYaxis.TabIndex = 6;
@@ -170,7 +172,7 @@
             // 
             this.lblXaxis.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.lblXaxis.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblXaxis.Location = new System.Drawing.Point(722, 41);
+            this.lblXaxis.Location = new System.Drawing.Point(561, 41);
             this.lblXaxis.Name = "lblXaxis";
             this.lblXaxis.Size = new System.Drawing.Size(110, 23);
             this.lblXaxis.TabIndex = 8;
@@ -179,7 +181,7 @@
             // lblPrompt4
             // 
             this.lblPrompt4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrompt4.Location = new System.Drawing.Point(672, 41);
+            this.lblPrompt4.Location = new System.Drawing.Point(677, 41);
             this.lblPrompt4.Name = "lblPrompt4";
             this.lblPrompt4.Size = new System.Drawing.Size(47, 23);
             this.lblPrompt4.TabIndex = 7;
@@ -256,6 +258,8 @@
             // 
             // grpItem
             // 
+            this.grpItem.Controls.Add(this.btnCancelItem);
+            this.grpItem.Controls.Add(this.btnDeleteItem);
             this.grpItem.Controls.Add(this.btnAddItem);
             this.grpItem.Controls.Add(this.lblColorName);
             this.grpItem.Controls.Add(this.btnChangeColor);
@@ -271,6 +275,55 @@
             this.grpItem.TabIndex = 17;
             this.grpItem.TabStop = false;
             this.grpItem.Text = "Item";
+            // 
+            // btnAddItem
+            // 
+            this.btnAddItem.Location = new System.Drawing.Point(114, 177);
+            this.btnAddItem.Name = "btnAddItem";
+            this.btnAddItem.Size = new System.Drawing.Size(75, 33);
+            this.btnAddItem.TabIndex = 20;
+            this.btnAddItem.Text = "Add";
+            this.btnAddItem.UseVisualStyleBackColor = true;
+            this.btnAddItem.Click += new System.EventHandler(this.btnAddItem_Click);
+            // 
+            // lblColorName
+            // 
+            this.lblColorName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblColorName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblColorName.Location = new System.Drawing.Point(100, 80);
+            this.lblColorName.Name = "lblColorName";
+            this.lblColorName.Size = new System.Drawing.Size(119, 25);
+            this.lblColorName.TabIndex = 18;
+            this.lblColorName.Text = "Default: Random";
+            this.lblColorName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnChangeColor
+            // 
+            this.btnChangeColor.Location = new System.Drawing.Point(225, 80);
+            this.btnChangeColor.Name = "btnChangeColor";
+            this.btnChangeColor.Size = new System.Drawing.Size(59, 23);
+            this.btnChangeColor.TabIndex = 17;
+            this.btnChangeColor.Text = "Change";
+            this.btnChangeColor.UseVisualStyleBackColor = true;
+            // 
+            // lblColorBox
+            // 
+            this.lblColorBox.BackColor = System.Drawing.Color.Black;
+            this.lblColorBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblColorBox.Location = new System.Drawing.Point(77, 80);
+            this.lblColorBox.Name = "lblColorBox";
+            this.lblColorBox.Size = new System.Drawing.Size(25, 25);
+            this.lblColorBox.TabIndex = 16;
+            // 
+            // lblPrompt10
+            // 
+            this.lblPrompt10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPrompt10.Location = new System.Drawing.Point(11, 80);
+            this.lblPrompt10.Name = "lblPrompt10";
+            this.lblPrompt10.Size = new System.Drawing.Size(60, 23);
+            this.lblPrompt10.TabIndex = 15;
+            this.lblPrompt10.Text = "Color:";
+            this.lblPrompt10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtItemName
             // 
@@ -299,45 +352,6 @@
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
-            // lblPrompt10
-            // 
-            this.lblPrompt10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrompt10.Location = new System.Drawing.Point(11, 80);
-            this.lblPrompt10.Name = "lblPrompt10";
-            this.lblPrompt10.Size = new System.Drawing.Size(60, 23);
-            this.lblPrompt10.TabIndex = 15;
-            this.lblPrompt10.Text = "Color:";
-            this.lblPrompt10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // lblColorBox
-            // 
-            this.lblColorBox.BackColor = System.Drawing.Color.Black;
-            this.lblColorBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblColorBox.Location = new System.Drawing.Point(77, 80);
-            this.lblColorBox.Name = "lblColorBox";
-            this.lblColorBox.Size = new System.Drawing.Size(25, 25);
-            this.lblColorBox.TabIndex = 16;
-            // 
-            // btnChangeColor
-            // 
-            this.btnChangeColor.Location = new System.Drawing.Point(225, 80);
-            this.btnChangeColor.Name = "btnChangeColor";
-            this.btnChangeColor.Size = new System.Drawing.Size(59, 23);
-            this.btnChangeColor.TabIndex = 17;
-            this.btnChangeColor.Text = "Change";
-            this.btnChangeColor.UseVisualStyleBackColor = true;
-            // 
-            // lblColorName
-            // 
-            this.lblColorName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblColorName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblColorName.Location = new System.Drawing.Point(100, 80);
-            this.lblColorName.Name = "lblColorName";
-            this.lblColorName.Size = new System.Drawing.Size(119, 25);
-            this.lblColorName.TabIndex = 18;
-            this.lblColorName.Text = "Default: Random";
-            this.lblColorName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // btnCreate
             // 
             this.btnCreate.Location = new System.Drawing.Point(380, 340);
@@ -347,16 +361,6 @@
             this.btnCreate.Text = "Create Graph";
             this.btnCreate.UseVisualStyleBackColor = true;
             // 
-            // btnAddItem
-            // 
-            this.btnAddItem.Location = new System.Drawing.Point(100, 175);
-            this.btnAddItem.Name = "btnAddItem";
-            this.btnAddItem.Size = new System.Drawing.Size(75, 33);
-            this.btnAddItem.TabIndex = 20;
-            this.btnAddItem.Text = "Add Item";
-            this.btnAddItem.UseVisualStyleBackColor = true;
-            this.btnAddItem.Click += new System.EventHandler(this.btnAddItem_Click);
-            // 
             // btnSave
             // 
             this.btnSave.Location = new System.Drawing.Point(184, 340);
@@ -365,6 +369,30 @@
             this.btnSave.TabIndex = 20;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            // 
+            // btnDeleteItem
+            // 
+            this.btnDeleteItem.Enabled = false;
+            this.btnDeleteItem.Location = new System.Drawing.Point(209, 177);
+            this.btnDeleteItem.Name = "btnDeleteItem";
+            this.btnDeleteItem.Size = new System.Drawing.Size(75, 33);
+            this.btnDeleteItem.TabIndex = 21;
+            this.btnDeleteItem.Text = "Delete";
+            this.btnDeleteItem.UseVisualStyleBackColor = true;
+            this.btnDeleteItem.Visible = false;
+            this.btnDeleteItem.Click += new System.EventHandler(this.btnDeleteItem_Click);
+            // 
+            // btnCancelItem
+            // 
+            this.btnCancelItem.Enabled = false;
+            this.btnCancelItem.Location = new System.Drawing.Point(14, 177);
+            this.btnCancelItem.Name = "btnCancelItem";
+            this.btnCancelItem.Size = new System.Drawing.Size(75, 33);
+            this.btnCancelItem.TabIndex = 22;
+            this.btnCancelItem.Text = "Cancel";
+            this.btnCancelItem.UseVisualStyleBackColor = true;
+            this.btnCancelItem.Visible = false;
+            this.btnCancelItem.Click += new System.EventHandler(this.btnCancelItem_Click);
             // 
             // mainFrm
             // 
@@ -435,5 +463,7 @@
         private System.Windows.Forms.Label lblColorName;
         private System.Windows.Forms.Button btnCreate;
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button btnCancelItem;
+        private System.Windows.Forms.Button btnDeleteItem;
     }
 }

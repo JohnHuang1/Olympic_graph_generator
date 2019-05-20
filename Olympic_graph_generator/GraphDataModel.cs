@@ -39,6 +39,11 @@ namespace Olympic_graph_generator
             dataSetList.Remove((ItemModel)dataSetList.Where(i => name == i.Name));
         }
 
+        public void RemoveItem(ItemModel item)
+        {
+            dataSetList.Remove(item);
+        }
+
         public void RemoveItemAt(int index)
         {
             dataSetList.RemoveAt(index);

@@ -37,18 +37,33 @@ namespace Olympic_graph_generator
             string name = txtItemName.Text;
             if(!name.Equals("") && Int64.TryParse(txtItemData.Text, out Int64 data))
             {
-                if(btnAddItem.Text == "Add Item")
+                if(btnAddItem.Text == "Add")
                 {
                     graphData.AddItem(name, data);
-                } else if (btnAddItem.Text == "Change Item")
+                } else if (btnAddItem.Text == "Change")
                 {
                     graphData.ChangeItemAt(lstData.SelectedIndex, name, data, 0);
                 }
+                ResetItemFields();
             } else
             {
                 //TODO: Customize error message based on what is missing
                 MessageBox.Show("Neither 'Name' nor 'Data' can be empty.", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            RefreshListBox();
+        }
+
+        private void btnCancelItem_Click(object sender, EventArgs e)
+        {
+            ResetItemFields();
+        }
+
+        private void btnDeleteItem_Click(object sender, EventArgs e)
+        {
+            ResetItemFields();
+            ItemModel item = graphData.GetItemList()[lstData.SelectedIndex];
+            graphData.RemoveItem(item);
+            lstData.SetSelected(lstData.SelectedIndex + 1, true);
             RefreshListBox();
         }
 
@@ -58,9 +73,9 @@ namespace Olympic_graph_generator
             txtItemName.Text = item.Name;
             txtItemData.Text = item.Data.ToString();
 
-            btnAddItem.Text = "Change Item";
-            //TODO: Add cancel button and set visibility to VISIBLE here
-            //TODO: Add delete button and set visibility to VISIBLE here
+            btnAddItem.Text = "Change";
+            btnDeleteItem.Visible = true;
+            btnCancelItem.Visible = true;
         }
 
         public void RefreshListBox()
@@ -70,6 +85,16 @@ namespace Olympic_graph_generator
             {
                 lstData.Items.Add(item.Name + "\t\t" + item.Data);
             }
+        }
+
+        public void ResetItemFields()
+        {
+            txtItemName.Text = "";
+            txtItemData.Text = "";
+            btnAddItem.Text = "Add";
+            btnDeleteItem.Visible = false;
+            btnCancelItem.Visible = false;
+
         }
 
     }
