@@ -92,6 +92,7 @@
             this.btnCreateFile.TabIndex = 5;
             this.btnCreateFile.Text = "Create Image File";
             this.btnCreateFile.UseVisualStyleBackColor = true;
+            this.btnCreateFile.Click += new System.EventHandler(this.btnCreateFile_Click);
             // 
             // graphFrm
             // 
@@ -106,7 +107,6 @@
             this.Controls.Add(this.lblPanel);
             this.Name = "graphFrm";
             this.Text = "Olympic Graph Generator";
-            this.Paint += new System.Windows.Forms.PaintEventHandler(this.graphFrm_Paint);
             this.ResumeLayout(false);
 
         }
