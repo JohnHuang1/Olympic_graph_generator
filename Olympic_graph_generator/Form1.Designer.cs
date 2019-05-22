@@ -97,6 +97,7 @@
             this.Controls.Add(this.lbl1);
             this.Name = "frmIntro";
             this.Text = "Olympic Graph Generator";
+            this.Load += new System.EventHandler(this.frmIntro_Load);
             this.ResumeLayout(false);
 
         }

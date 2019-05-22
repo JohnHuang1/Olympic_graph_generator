@@ -15,6 +15,12 @@ namespace Olympic_graph_generator
         public frmIntro()
         {
             InitializeComponent();
+            
+        }
+
+        private void frmIntro_Load(object sender, EventArgs e)
+        {
+            btnStart.Select();
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -33,5 +39,6 @@ namespace Olympic_graph_generator
             mainFrm.Show();
             Hide();
         }
+
     }
 }

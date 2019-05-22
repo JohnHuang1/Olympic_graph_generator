@@ -97,5 +97,10 @@ namespace Olympic_graph_generator
 
         }
 
+        private void btnCreate_Click(object sender, EventArgs e)
+        {
+            graphFrm graphFrm = new graphFrm(graphData);
+            graphFrm.Show();
+        }
     }
 }

@@ -28,44 +28,96 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            this.lblPanel = new System.Windows.Forms.Label();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.lblXaxis = new System.Windows.Forms.Label();
+            this.lblTitle = new System.Windows.Forms.Label();
+            this.lblYaxis = new System.Windows.Forms.Label();
+            this.btnCreateFile = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // chart1
+            // lblPanel
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(12, 12);
-            this.chart1.Name = "chart1";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(300, 300);
-            this.chart1.TabIndex = 0;
-            this.chart1.Text = "chart1";
+            this.lblPanel.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lblPanel.Location = new System.Drawing.Point(50, 50);
+            this.lblPanel.Name = "lblPanel";
+            this.lblPanel.Size = new System.Drawing.Size(400, 400);
+            this.lblPanel.TabIndex = 0;
+            // 
+            // btnClose
+            // 
+            this.btnClose.Location = new System.Drawing.Point(12, 534);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(98, 40);
+            this.btnClose.TabIndex = 1;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // lblXaxis
+            // 
+            this.lblXaxis.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lblXaxis.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblXaxis.Location = new System.Drawing.Point(100, 458);
+            this.lblXaxis.Name = "lblXaxis";
+            this.lblXaxis.Size = new System.Drawing.Size(300, 25);
+            this.lblXaxis.TabIndex = 2;
+            // 
+            // lblTitle
+            // 
+            this.lblTitle.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lblTitle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblTitle.Location = new System.Drawing.Point(100, 9);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(300, 37);
+            this.lblTitle.TabIndex = 3;
+            this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblYaxis
+            // 
+            this.lblYaxis.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lblYaxis.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblYaxis.Location = new System.Drawing.Point(17, 100);
+            this.lblYaxis.Name = "lblYaxis";
+            this.lblYaxis.Size = new System.Drawing.Size(25, 300);
+            this.lblYaxis.TabIndex = 4;
+            this.lblYaxis.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblYaxis.Paint += new System.Windows.Forms.PaintEventHandler(this.lblYaxis_Paint);
+            // 
+            // btnCreateFile
+            // 
+            this.btnCreateFile.Location = new System.Drawing.Point(352, 534);
+            this.btnCreateFile.Name = "btnCreateFile";
+            this.btnCreateFile.Size = new System.Drawing.Size(98, 40);
+            this.btnCreateFile.TabIndex = 5;
+            this.btnCreateFile.Text = "Create Image File";
+            this.btnCreateFile.UseVisualStyleBackColor = true;
             // 
             // graphFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.chart1);
+            this.ClientSize = new System.Drawing.Size(484, 586);
+            this.Controls.Add(this.btnCreateFile);
+            this.Controls.Add(this.lblYaxis);
+            this.Controls.Add(this.lblTitle);
+            this.Controls.Add(this.lblXaxis);
+            this.Controls.Add(this.btnClose);
+            this.Controls.Add(this.lblPanel);
             this.Name = "graphFrm";
             this.Text = "Olympic Graph Generator";
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.graphFrm_Paint);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.Label lblPanel;
+        private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Label lblXaxis;
+        private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.Label lblYaxis;
+        private System.Windows.Forms.Button btnCreateFile;
     }
 }

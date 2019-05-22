@@ -49,6 +49,8 @@
             this.txtYaxis = new System.Windows.Forms.TextBox();
             this.lblPrompt7 = new System.Windows.Forms.Label();
             this.grpItem = new System.Windows.Forms.GroupBox();
+            this.btnCancelItem = new System.Windows.Forms.Button();
+            this.btnDeleteItem = new System.Windows.Forms.Button();
             this.btnAddItem = new System.Windows.Forms.Button();
             this.lblColorName = new System.Windows.Forms.Label();
             this.btnChangeColor = new System.Windows.Forms.Button();
@@ -59,8 +61,6 @@
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnCreate = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
-            this.btnDeleteItem = new System.Windows.Forms.Button();
-            this.btnCancelItem = new System.Windows.Forms.Button();
             this.grpGraphChoices.SuspendLayout();
             this.grpItem.SuspendLayout();
             this.SuspendLayout();
@@ -276,6 +276,30 @@
             this.grpItem.TabStop = false;
             this.grpItem.Text = "Item";
             // 
+            // btnCancelItem
+            // 
+            this.btnCancelItem.Enabled = false;
+            this.btnCancelItem.Location = new System.Drawing.Point(14, 177);
+            this.btnCancelItem.Name = "btnCancelItem";
+            this.btnCancelItem.Size = new System.Drawing.Size(75, 33);
+            this.btnCancelItem.TabIndex = 22;
+            this.btnCancelItem.Text = "Cancel";
+            this.btnCancelItem.UseVisualStyleBackColor = true;
+            this.btnCancelItem.Visible = false;
+            this.btnCancelItem.Click += new System.EventHandler(this.btnCancelItem_Click);
+            // 
+            // btnDeleteItem
+            // 
+            this.btnDeleteItem.Enabled = false;
+            this.btnDeleteItem.Location = new System.Drawing.Point(209, 177);
+            this.btnDeleteItem.Name = "btnDeleteItem";
+            this.btnDeleteItem.Size = new System.Drawing.Size(75, 33);
+            this.btnDeleteItem.TabIndex = 21;
+            this.btnDeleteItem.Text = "Delete";
+            this.btnDeleteItem.UseVisualStyleBackColor = true;
+            this.btnDeleteItem.Visible = false;
+            this.btnDeleteItem.Click += new System.EventHandler(this.btnDeleteItem_Click);
+            // 
             // btnAddItem
             // 
             this.btnAddItem.Location = new System.Drawing.Point(114, 177);
@@ -360,6 +384,7 @@
             this.btnCreate.TabIndex = 19;
             this.btnCreate.Text = "Create Graph";
             this.btnCreate.UseVisualStyleBackColor = true;
+            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // btnSave
             // 
@@ -369,30 +394,6 @@
             this.btnSave.TabIndex = 20;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
-            // 
-            // btnDeleteItem
-            // 
-            this.btnDeleteItem.Enabled = false;
-            this.btnDeleteItem.Location = new System.Drawing.Point(209, 177);
-            this.btnDeleteItem.Name = "btnDeleteItem";
-            this.btnDeleteItem.Size = new System.Drawing.Size(75, 33);
-            this.btnDeleteItem.TabIndex = 21;
-            this.btnDeleteItem.Text = "Delete";
-            this.btnDeleteItem.UseVisualStyleBackColor = true;
-            this.btnDeleteItem.Visible = false;
-            this.btnDeleteItem.Click += new System.EventHandler(this.btnDeleteItem_Click);
-            // 
-            // btnCancelItem
-            // 
-            this.btnCancelItem.Enabled = false;
-            this.btnCancelItem.Location = new System.Drawing.Point(14, 177);
-            this.btnCancelItem.Name = "btnCancelItem";
-            this.btnCancelItem.Size = new System.Drawing.Size(75, 33);
-            this.btnCancelItem.TabIndex = 22;
-            this.btnCancelItem.Text = "Cancel";
-            this.btnCancelItem.UseVisualStyleBackColor = true;
-            this.btnCancelItem.Visible = false;
-            this.btnCancelItem.Click += new System.EventHandler(this.btnCancelItem_Click);
             // 
             // mainFrm
             // 
