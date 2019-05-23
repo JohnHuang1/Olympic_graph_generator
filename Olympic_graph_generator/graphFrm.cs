@@ -59,33 +59,60 @@ namespace Olympic_graph_generator
             int dist = 50;
 
             //Draw Main Line
-            canvas.DrawLines(pen, new Point[] { new Point(dist, dist), new Point(dist, height - dist), new Point(width - dist, height - dist) });
+            //canvas.DrawLines(pen, new Point[] { new Point(dist, dist), new Point(dist, height - dist), new Point(width - dist, height - dist) });
 
             //Draw Axis Increment
             //Variables
             int lineSize = 10;
-            int numOfInc = 10;
-            int counter = 10;
+            int YnumOfInc = 100;
+            int XnumOfInc = 5;
+            int counter = 0;
             int textBuffer = 2;
             int incrementAmount = 1;
             Font font = new Font("Ariel", 10, GraphicsUnit.Pixel);
-            for (int i = dist; i <= height - dist; i += (height - dist*2) / numOfInc)
+            Point currPoint = Point.Empty;
+            Point prevPoint = Point.Empty;
+
+            //Y-axis
+            for (int i = height - dist; i >= dist; i -= (height - dist*2) / YnumOfInc)
             {
                 //Measure Number
                 SizeF stringSize = TextRenderer.MeasureText(counter.ToString(), font);
 
-                //Y-axis
-                canvas.DrawLine(pen, dist - (lineSize / 2), i, (dist + (lineSize / 2)), i);
+                canvas.DrawLine(pen, dist - (lineSize / 2), i, dist + (lineSize / 2), i);
                 canvas.DrawString(counter.ToString(), font, new SolidBrush(Color.Black), dist - (lineSize / 2) - stringSize.Width - textBuffer, i - (stringSize.Height / 2) - textBuffer);
-
-                //X-axis
-                canvas.DrawLine(pen, i, height - dist - (lineSize / 2), i, height - dist + (lineSize / 2));
-                canvas.DrawString(counter.ToString(), font, new SolidBrush(Color.Black), width - i - (stringSize.Width / 2) + textBuffer, (height - dist) + (lineSize / 2) + textBuffer);
+                currPoint = new Point(dist, i);
+                if (prevPoint != Point.Empty)
+                {
+                    canvas.DrawLine(pen, prevPoint, currPoint);
+                }
+                prevPoint = currPoint;
 
                 //Increment
-                counter -= incrementAmount;
+                counter += incrementAmount;
             }
+            
+            currPoint = Point.Empty;
+            prevPoint = Point.Empty;
+            //X-axis
+            for (int i = dist; i <= width - dist; i += (height - dist*2) / XnumOfInc)
+            {
+                //Measure Number
+                SizeF stringSize = TextRenderer.MeasureText(counter.ToString(), font);
 
+                canvas.DrawLine(pen, i, height - dist - (lineSize / 2), i, height - dist + (lineSize / 2));
+                canvas.DrawString(counter.ToString(), font, new SolidBrush(Color.Black), i - (stringSize.Width / 2) - textBuffer, (height - dist) + (lineSize / 2) + textBuffer);
+                currPoint = new Point(i, height - dist);
+                if (prevPoint != Point.Empty)
+                {
+                    canvas.DrawLine(pen, prevPoint, new Point(dist, i));
+                }
+                prevPoint = currPoint;
+
+                //Increment
+                counter += incrementAmount;
+            }
+            
         }
 
         private void SetPen(Color color, int width)
