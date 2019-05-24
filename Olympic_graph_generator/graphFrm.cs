@@ -13,15 +13,19 @@ namespace Olympic_graph_generator
 {
     public partial class graphFrm : Form
     {
+        public enum GraphType { PieChart, BarGraph, LineGraph };
+
         GraphDataModel graphData = new GraphDataModel();
         Graphics canvas;
         Pen pen;
-        public graphFrm(GraphDataModel graphData)
+        public GraphType GType;
+        public graphFrm(GraphDataModel graphData, int graphType)
         {
             InitializeComponent();
             this.graphData = graphData;
             canvas = lblPanel.CreateGraphics();
             SetPen(Color.Blue, 1);
+            GType = (GraphType)graphType;
         }
 
 
@@ -44,7 +48,22 @@ namespace Olympic_graph_generator
         private void btnCreateFile_Click(object sender, EventArgs e)
         {
             canvas.DrawLine(pen, 0, 0, lblPanel.Height, lblPanel.Width);
-            DrawBarGraph(graphData.GetItemList());
+
+            switch (GType)
+            {
+                case GraphType.BarGraph:
+                    DrawBarGraph(graphData.GetItemList());
+                    break;
+                case GraphType.PieChart:
+                    DrawPieChart(graphData.GetItemList());
+                    break;
+                case GraphType.LineGraph:
+                    break;
+                default:
+                    MessageBox.Show("A graph type was not chosen.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    break;
+            }
+
         }
 
         private void DrawBarGraph(List<ItemModel> data)
@@ -165,6 +184,19 @@ namespace Olympic_graph_generator
                 counter++;
             }
             
+        }
+
+        private void DrawPieChart(List<ItemModel> data)
+        {
+            Random rnd = new Random();
+            float total = data.Sum(n => n.Data);
+            Rectangle border = new Rectangle(50, 50, 300, 300);
+            int prevAngle = 0;
+            foreach(ItemModel item in data)
+            {
+                Color randomColor = Color.FromArgb(rnd.Next(256), rnd.Next(256), rnd.Next(256));
+                canvas.FillPie(new SolidBrush(randomColor), border, prevAngle, ((float)item.Data / total) * 360);
+            }
         }
 
         private void SetPen(Color color, int width)

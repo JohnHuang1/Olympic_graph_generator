@@ -47,7 +47,7 @@ namespace Olympic_graph_generator
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
-            graphFrm graphFrm = new graphFrm(graphData);
+            graphFrm graphFrm = new graphFrm(graphData, CheckRadioButton());
             graphFrm.Show();
         }
 
@@ -70,6 +70,7 @@ namespace Olympic_graph_generator
             testData.AddItem("Rami", 15);
             graphData = testData;
             UpdateForm(1);
+
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -79,6 +80,27 @@ namespace Olympic_graph_generator
             graphData.Xaxis = txtXaxis.Text;
 
             UpdateForm(0);
+        }
+
+        private int CheckRadioButton()
+        {
+            int result;
+            switch (grpGraphChoices.Controls.OfType<RadioButton>().FirstOrDefault(n => n.Checked).Name)
+            {
+                case "radBar":
+                    result = (int)graphFrm.GraphType.BarGraph;
+                    break;
+                case "radPie":
+                    result = (int)graphFrm.GraphType.PieChart;
+                    break;
+                case "radLine":
+                    result = (int)graphFrm.GraphType.LineGraph;
+                    break;
+                default:
+                    result = -1;
+                    break;
+            }
+            return result;
         }
 
         private void lstData_SelectedIndexChanged(object sender, EventArgs e)
