@@ -191,11 +191,13 @@ namespace Olympic_graph_generator
             Random rnd = new Random();
             float total = data.Sum(n => n.Data);
             Rectangle border = new Rectangle(50, 50, 300, 300);
-            int prevAngle = 0;
-            foreach(ItemModel item in data)
+            float prevAngle = 0;
+            foreach (ItemModel item in data)
             {
+                float sweepAngle = item.Data / total * 360;
                 Color randomColor = Color.FromArgb(rnd.Next(256), rnd.Next(256), rnd.Next(256));
-                canvas.FillPie(new SolidBrush(randomColor), border, prevAngle, ((float)item.Data / total) * 360);
+                canvas.FillPie(new SolidBrush(randomColor), border, prevAngle, sweepAngle);
+                prevAngle += sweepAngle;
             }
         }
 
