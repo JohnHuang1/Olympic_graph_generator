@@ -107,6 +107,7 @@
             this.Controls.Add(this.lblPanel);
             this.Name = "graphFrm";
             this.Text = "Olympic Graph Generator";
+            this.Load += new System.EventHandler(this.graphFrm_Load);
             this.ResumeLayout(false);
 
         }

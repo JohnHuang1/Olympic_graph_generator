@@ -61,6 +61,7 @@
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnCreate = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
+            this.btnLoad = new System.Windows.Forms.Button();
             this.grpGraphChoices.SuspendLayout();
             this.grpItem.SuspendLayout();
             this.SuspendLayout();
@@ -378,9 +379,9 @@
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(380, 340);
+            this.btnCreate.Location = new System.Drawing.Point(393, 340);
             this.btnCreate.Name = "btnCreate";
-            this.btnCreate.Size = new System.Drawing.Size(106, 47);
+            this.btnCreate.Size = new System.Drawing.Size(93, 47);
             this.btnCreate.TabIndex = 19;
             this.btnCreate.Text = "Create Graph";
             this.btnCreate.UseVisualStyleBackColor = true;
@@ -388,18 +389,29 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(184, 340);
+            this.btnSave.Location = new System.Drawing.Point(290, 340);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(106, 47);
+            this.btnSave.Size = new System.Drawing.Size(93, 47);
             this.btnSave.TabIndex = 20;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            // 
+            // btnLoad
+            // 
+            this.btnLoad.Location = new System.Drawing.Point(184, 340);
+            this.btnLoad.Name = "btnLoad";
+            this.btnLoad.Size = new System.Drawing.Size(93, 47);
+            this.btnLoad.TabIndex = 21;
+            this.btnLoad.Text = "Load";
+            this.btnLoad.UseVisualStyleBackColor = true;
+            this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
             // 
             // mainFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(844, 399);
+            this.Controls.Add(this.btnLoad);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnCreate);
             this.Controls.Add(this.btnUpdate);
@@ -466,5 +478,6 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCancelItem;
         private System.Windows.Forms.Button btnDeleteItem;
+        private System.Windows.Forms.Button btnLoad;
     }
 }

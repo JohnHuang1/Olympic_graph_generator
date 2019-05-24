@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Drawing;
 
 namespace Olympic_graph_generator
 {
@@ -19,9 +20,13 @@ namespace Olympic_graph_generator
         }
 
 
-        public void AddItem(string name, Int64 data, int color = 0)
+        public void AddItem(string name, int data, Color color)
         {
             dataSetList.Add(new ItemModel(name, data, color));
+        }
+        public void AddItem(String name, int data)
+        {
+            dataSetList.Add(new ItemModel(name, data, Color.Blue));
         }
 
         public ItemModel GetItem(string name)
@@ -49,7 +54,7 @@ namespace Olympic_graph_generator
             dataSetList.RemoveAt(index);
         }
 
-        public void ChangeItemAt(int index, string name, Int64 data, int color)
+        public void ChangeItemAt(int index, string name, int data, Color color)
         {
             ItemModel item = dataSetList.ElementAt(index);
             item.Name = name;

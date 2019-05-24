@@ -18,31 +18,18 @@ namespace Olympic_graph_generator
             InitializeComponent();
         }
 
-        private void btnUpdate_Click(object sender, EventArgs e)
-        {
-            string title = txtTitle.Text;
-            string y = txtYaxis.Text;
-            string x = txtXaxis.Text;
-            lblTitle.Text = title;
-            graphData.Title = title;
-            lblXaxis.Text = x;
-            graphData.Xaxis = x;
-            lblYaxis.Text = y;
-            graphData.Yaxis = y;
-        }
-
         private void btnAddItem_Click(object sender, EventArgs e)
         {
 
             string name = txtItemName.Text;
-            if(!name.Equals("") && Int64.TryParse(txtItemData.Text, out Int64 data))
+            if(!name.Equals("") && int.TryParse(txtItemData.Text, out int data))
             {
                 if(btnAddItem.Text == "Add")
                 {
                     graphData.AddItem(name, data);
                 } else if (btnAddItem.Text == "Change")
                 {
-                    graphData.ChangeItemAt(lstData.SelectedIndex, name, data, 0);
+                    graphData.ChangeItemAt(lstData.SelectedIndex, name, data, Color.Blue);
                 }
                 ResetItemFields();
             } else
@@ -58,6 +45,12 @@ namespace Olympic_graph_generator
             ResetItemFields();
         }
 
+        private void btnCreate_Click(object sender, EventArgs e)
+        {
+            graphFrm graphFrm = new graphFrm(graphData);
+            graphFrm.Show();
+        }
+
         private void btnDeleteItem_Click(object sender, EventArgs e)
         {
             ResetItemFields();
@@ -65,6 +58,27 @@ namespace Olympic_graph_generator
             graphData.RemoveItem(item);
             lstData.SetSelected(lstData.SelectedIndex + 1, true);
             RefreshListBox();
+        }
+
+        private void btnLoad_Click(object sender, EventArgs e)
+        {
+            GraphDataModel testData = new GraphDataModel("Pullups", "# of Pullups in a Row", "People");
+            testData.AddItem("Forest", 23);
+            testData.AddItem("John", 10);
+            testData.AddItem("Raheel", 19);
+            testData.AddItem("Tyler", 13);
+            testData.AddItem("Rami", 15);
+            graphData = testData;
+            UpdateForm(1);
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            graphData.Title = txtTitle.Text;
+            graphData.Yaxis = txtYaxis.Text;
+            graphData.Xaxis = txtXaxis.Text;
+
+            UpdateForm(0);
         }
 
         private void lstData_SelectedIndexChanged(object sender, EventArgs e)
@@ -97,10 +111,24 @@ namespace Olympic_graph_generator
 
         }
 
-        private void btnCreate_Click(object sender, EventArgs e)
+        private void UpdateForm(int updateValue)
         {
-            graphFrm graphFrm = new graphFrm(graphData);
-            graphFrm.Show();
+            if(updateValue >= 0)
+            {
+                lblTitle.Text = graphData.Title;
+                txtTitle.Text = graphData.Title;
+                lblYaxis.Text = graphData.Yaxis;
+                txtYaxis.Text = graphData.Yaxis;
+                lblXaxis.Text = graphData.Xaxis;
+                txtXaxis.Text = graphData.Xaxis;
+
+                ResetItemFields();
+                if(updateValue >= 1)
+                {
+                    RefreshListBox();
+                } 
+            }
         }
+
     }
 }
