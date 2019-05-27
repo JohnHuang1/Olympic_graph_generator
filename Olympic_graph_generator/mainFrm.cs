@@ -26,10 +26,10 @@ namespace Olympic_graph_generator
             {
                 if(btnAddItem.Text == "Add")
                 {
-                    graphData.AddItem(name, data);
+                    graphData.AddItem(name, data, lblColorBox.BackColor);
                 } else if (btnAddItem.Text == "Change")
                 {
-                    graphData.ChangeItemAt(lstData.SelectedIndex, name, data, Color.Blue);
+                    graphData.ChangeItemAt(lstData.SelectedIndex, name, data, lblColorBox.BackColor);
                 }
                 ResetItemFields();
             } else
@@ -47,8 +47,15 @@ namespace Olympic_graph_generator
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
-            graphFrm graphFrm = new graphFrm(graphData, CheckRadioButton());
-            graphFrm.Show();
+            if(graphData.GetItemList().Count > 0)
+            {
+                graphFrm graphFrm = new graphFrm(graphData, CheckRadioButton());
+                graphFrm.Show();
+            }
+            else
+            {
+                MessageBox.Show("There is no data to draw.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnDeleteItem_Click(object sender, EventArgs e)
@@ -63,14 +70,13 @@ namespace Olympic_graph_generator
         private void btnLoad_Click(object sender, EventArgs e)
         {
             GraphDataModel testData = new GraphDataModel("Pullups", "# of Pullups in a Row", "People");
-            testData.AddItem("Forest", 23);
-            testData.AddItem("John", 10);
-            testData.AddItem("Raheel", 19);
-            testData.AddItem("Tyler", 13);
-            testData.AddItem("Rami", 15);
+            testData.AddItem("Forest", 23, Color.Green);
+            testData.AddItem("John", 10, Color.Blue);
+            testData.AddItem("Raheel", 19, Color.Orange);
+            testData.AddItem("Tyler", 13, Color.LightBlue);
+            testData.AddItem("Rami", 15, Color.Red);
             graphData = testData;
             UpdateForm(1);
-
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -108,6 +114,8 @@ namespace Olympic_graph_generator
             ItemModel item = graphData.GetItemList()[lstData.SelectedIndex];
             txtItemName.Text = item.Name;
             txtItemData.Text = item.Data.ToString();
+            lblColorBox.BackColor = item.Color;
+            lblColorName.Text = item.Color.Name;
 
             btnAddItem.Text = "Change";
             btnDeleteItem.Visible = true;
@@ -119,7 +127,7 @@ namespace Olympic_graph_generator
             lstData.Items.Clear();
             foreach (ItemModel item in graphData.GetItemList())
             {
-                lstData.Items.Add(item.Name + "\t\t" + item.Data);
+                lstData.Items.Add(item.Name + "\t\t" + item.Data + "\t\t" + item.Color.Name);
             }
         }
 
@@ -128,6 +136,8 @@ namespace Olympic_graph_generator
             txtItemName.Text = "";
             txtItemData.Text = "";
             btnAddItem.Text = "Add";
+            lblColorBox.BackColor = Color.Black;
+            lblColorName.Text = "Default: Black";
             btnDeleteItem.Visible = false;
             btnCancelItem.Visible = false;
 
@@ -152,5 +162,14 @@ namespace Olympic_graph_generator
             }
         }
 
+        private void btnChangeColor_Click(object sender, EventArgs e)
+        {
+            if(colorPicker.ShowDialog() == DialogResult.OK)
+            {
+                lblColorBox.BackColor = colorPicker.Color;
+                lblColorName.Text = colorPicker.Color.Name;
+            }
+
+        }
     }
 }

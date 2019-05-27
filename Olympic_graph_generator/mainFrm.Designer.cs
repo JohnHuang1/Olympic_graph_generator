@@ -60,8 +60,8 @@
             this.lblPromp8 = new System.Windows.Forms.Label();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnCreate = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
             this.btnLoad = new System.Windows.Forms.Button();
+            this.colorPicker = new System.Windows.Forms.ColorDialog();
             this.grpGraphChoices.SuspendLayout();
             this.grpItem.SuspendLayout();
             this.SuspendLayout();
@@ -220,7 +220,7 @@
             this.lblPrompt9.Name = "lblPrompt9";
             this.lblPrompt9.Size = new System.Drawing.Size(60, 23);
             this.lblPrompt9.TabIndex = 11;
-            this.lblPrompt9.Text = "Data:";
+            this.lblPrompt9.Text = "Y-Axis:";
             this.lblPrompt9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtXaxis
@@ -319,7 +319,7 @@
             this.lblColorName.Name = "lblColorName";
             this.lblColorName.Size = new System.Drawing.Size(119, 25);
             this.lblColorName.TabIndex = 18;
-            this.lblColorName.Text = "Default: Random";
+            this.lblColorName.Text = "Default: Black";
             this.lblColorName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnChangeColor
@@ -330,6 +330,7 @@
             this.btnChangeColor.TabIndex = 17;
             this.btnChangeColor.Text = "Change";
             this.btnChangeColor.UseVisualStyleBackColor = true;
+            this.btnChangeColor.Click += new System.EventHandler(this.btnChangeColor_Click);
             // 
             // lblColorBox
             // 
@@ -359,12 +360,13 @@
             // 
             // lblPromp8
             // 
+            this.lblPromp8.BackColor = System.Drawing.SystemColors.Control;
             this.lblPromp8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPromp8.Location = new System.Drawing.Point(11, 16);
             this.lblPromp8.Name = "lblPromp8";
             this.lblPromp8.Size = new System.Drawing.Size(60, 23);
             this.lblPromp8.TabIndex = 13;
-            this.lblPromp8.Text = "Name:";
+            this.lblPromp8.Text = "X-Axis:";
             this.lblPromp8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // btnUpdate
@@ -387,15 +389,6 @@
             this.btnCreate.UseVisualStyleBackColor = true;
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
-            // btnSave
-            // 
-            this.btnSave.Location = new System.Drawing.Point(290, 340);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(93, 47);
-            this.btnSave.TabIndex = 20;
-            this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = true;
-            // 
             // btnLoad
             // 
             this.btnLoad.Location = new System.Drawing.Point(184, 340);
@@ -412,7 +405,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(844, 399);
             this.Controls.Add(this.btnLoad);
-            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnCreate);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.grpItem);
@@ -475,9 +467,9 @@
         private System.Windows.Forms.Button btnAddItem;
         private System.Windows.Forms.Label lblColorName;
         private System.Windows.Forms.Button btnCreate;
-        private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCancelItem;
         private System.Windows.Forms.Button btnDeleteItem;
         private System.Windows.Forms.Button btnLoad;
+        private System.Windows.Forms.ColorDialog colorPicker;
     }
 }

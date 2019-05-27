@@ -24,7 +24,7 @@ namespace Olympic_graph_generator
         {
             dataSetList.Add(new ItemModel(name, data, color));
         }
-        public void AddItem(String name, int data)
+        public void AddItem(string name, int data)
         {
             dataSetList.Add(new ItemModel(name, data, Color.Blue));
         }

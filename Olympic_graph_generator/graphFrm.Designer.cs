@@ -32,8 +32,8 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.lblXaxis = new System.Windows.Forms.Label();
             this.lblTitle = new System.Windows.Forms.Label();
-            this.lblYaxis = new System.Windows.Forms.Label();
             this.btnCreateFile = new System.Windows.Forms.Button();
+            this.lblYaxis = new RotatedLabel();
             this.SuspendLayout();
             // 
             // lblPanel
@@ -62,6 +62,8 @@
             this.lblXaxis.Name = "lblXaxis";
             this.lblXaxis.Size = new System.Drawing.Size(300, 25);
             this.lblXaxis.TabIndex = 2;
+            this.lblXaxis.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblXaxis.Visible = false;
             // 
             // lblTitle
             // 
@@ -73,17 +75,6 @@
             this.lblTitle.TabIndex = 3;
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // lblYaxis
-            // 
-            this.lblYaxis.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblYaxis.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblYaxis.Location = new System.Drawing.Point(17, 100);
-            this.lblYaxis.Name = "lblYaxis";
-            this.lblYaxis.Size = new System.Drawing.Size(25, 300);
-            this.lblYaxis.TabIndex = 4;
-            this.lblYaxis.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblYaxis.Paint += new System.Windows.Forms.PaintEventHandler(this.lblYaxis_Paint);
-            // 
             // btnCreateFile
             // 
             this.btnCreateFile.Location = new System.Drawing.Point(352, 534);
@@ -94,13 +85,24 @@
             this.btnCreateFile.UseVisualStyleBackColor = true;
             this.btnCreateFile.Click += new System.EventHandler(this.btnCreateFile_Click);
             // 
+            // lblYaxis
+            // 
+            this.lblYaxis.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lblYaxis.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblYaxis.Location = new System.Drawing.Point(19, 97);
+            this.lblYaxis.Name = "lblYaxis";
+            this.lblYaxis.NewText = null;
+            this.lblYaxis.Size = new System.Drawing.Size(25, 300);
+            this.lblYaxis.TabIndex = 6;
+            this.lblYaxis.Visible = false;
+            // 
             // graphFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(484, 586);
-            this.Controls.Add(this.btnCreateFile);
             this.Controls.Add(this.lblYaxis);
+            this.Controls.Add(this.btnCreateFile);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.lblXaxis);
             this.Controls.Add(this.btnClose);
@@ -118,7 +120,7 @@
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Label lblXaxis;
         private System.Windows.Forms.Label lblTitle;
-        private System.Windows.Forms.Label lblYaxis;
         private System.Windows.Forms.Button btnCreateFile;
+        private RotatedLabel lblYaxis;
     }
 }
