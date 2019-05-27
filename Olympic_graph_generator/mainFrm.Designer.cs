@@ -282,7 +282,6 @@
             // 
             // btnCancelItem
             // 
-            this.btnCancelItem.Enabled = false;
             this.btnCancelItem.Location = new System.Drawing.Point(14, 177);
             this.btnCancelItem.Name = "btnCancelItem";
             this.btnCancelItem.Size = new System.Drawing.Size(75, 33);
@@ -294,7 +293,6 @@
             // 
             // btnDeleteItem
             // 
-            this.btnDeleteItem.Enabled = false;
             this.btnDeleteItem.Location = new System.Drawing.Point(209, 177);
             this.btnDeleteItem.Name = "btnDeleteItem";
             this.btnDeleteItem.Size = new System.Drawing.Size(75, 33);

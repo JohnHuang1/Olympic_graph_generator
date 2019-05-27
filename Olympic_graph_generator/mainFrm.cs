@@ -74,7 +74,6 @@ namespace Olympic_graph_generator
             ResetItemFields();
             ItemModel item = graphData.GetItemList()[lstData.SelectedIndex];
             graphData.RemoveItem(item);
-            lstData.SetSelected(lstData.SelectedIndex + 1, true);
             RefreshListBox();
         }
 
