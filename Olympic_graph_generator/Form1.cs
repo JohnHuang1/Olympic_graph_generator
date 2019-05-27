@@ -18,11 +18,6 @@ namespace Olympic_graph_generator
             
         }
 
-        private void frmIntro_Load(object sender, EventArgs e)
-        {
-            btnStart.Select();
-        }
-
         private void btnExit_Click(object sender, EventArgs e)
         {
             Close();
@@ -38,6 +33,11 @@ namespace Olympic_graph_generator
             mainFrm mainFrm = new mainFrm();
             mainFrm.Show();
             Hide();
+        }
+
+        private void frmIntro_Load(object sender, EventArgs e)
+        {
+            btnStart.Select();
         }
 
     }

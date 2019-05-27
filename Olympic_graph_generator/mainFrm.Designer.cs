@@ -62,8 +62,11 @@
             this.btnCreate = new System.Windows.Forms.Button();
             this.btnLoad = new System.Windows.Forms.Button();
             this.colorPicker = new System.Windows.Forms.ColorDialog();
+            this.mnuStrip = new System.Windows.Forms.MenuStrip();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.grpGraphChoices.SuspendLayout();
             this.grpItem.SuspendLayout();
+            this.mnuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // grpGraphChoices
@@ -71,7 +74,7 @@
             this.grpGraphChoices.Controls.Add(this.radLine);
             this.grpGraphChoices.Controls.Add(this.radBar);
             this.grpGraphChoices.Controls.Add(this.radPie);
-            this.grpGraphChoices.Location = new System.Drawing.Point(15, 28);
+            this.grpGraphChoices.Location = new System.Drawing.Point(15, 37);
             this.grpGraphChoices.Name = "grpGraphChoices";
             this.grpGraphChoices.Size = new System.Drawing.Size(121, 359);
             this.grpGraphChoices.TabIndex = 0;
@@ -113,7 +116,7 @@
             // lblPrompt1
             // 
             this.lblPrompt1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrompt1.Location = new System.Drawing.Point(12, 9);
+            this.lblPrompt1.Location = new System.Drawing.Point(12, 18);
             this.lblPrompt1.Name = "lblPrompt1";
             this.lblPrompt1.Size = new System.Drawing.Size(184, 23);
             this.lblPrompt1.TabIndex = 1;
@@ -123,7 +126,7 @@
             // lstData
             // 
             this.lstData.FormattingEnabled = true;
-            this.lstData.Location = new System.Drawing.Point(519, 71);
+            this.lstData.Location = new System.Drawing.Point(519, 80);
             this.lstData.Name = "lstData";
             this.lstData.Size = new System.Drawing.Size(313, 316);
             this.lstData.TabIndex = 2;
@@ -132,7 +135,7 @@
             // lblPrompt2
             // 
             this.lblPrompt2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrompt2.Location = new System.Drawing.Point(516, 12);
+            this.lblPrompt2.Location = new System.Drawing.Point(516, 21);
             this.lblPrompt2.Name = "lblPrompt2";
             this.lblPrompt2.Size = new System.Drawing.Size(39, 23);
             this.lblPrompt2.TabIndex = 3;
@@ -143,7 +146,7 @@
             // 
             this.lblTitle.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.Location = new System.Drawing.Point(556, 12);
+            this.lblTitle.Location = new System.Drawing.Point(556, 21);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(276, 23);
             this.lblTitle.TabIndex = 4;
@@ -153,7 +156,7 @@
             // 
             this.lblYaxis.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.lblYaxis.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblYaxis.Location = new System.Drawing.Point(725, 41);
+            this.lblYaxis.Location = new System.Drawing.Point(725, 50);
             this.lblYaxis.Name = "lblYaxis";
             this.lblYaxis.Size = new System.Drawing.Size(106, 23);
             this.lblYaxis.TabIndex = 6;
@@ -162,7 +165,7 @@
             // lblPrompt3
             // 
             this.lblPrompt3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrompt3.Location = new System.Drawing.Point(516, 41);
+            this.lblPrompt3.Location = new System.Drawing.Point(516, 50);
             this.lblPrompt3.Name = "lblPrompt3";
             this.lblPrompt3.Size = new System.Drawing.Size(45, 23);
             this.lblPrompt3.TabIndex = 5;
@@ -173,7 +176,7 @@
             // 
             this.lblXaxis.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.lblXaxis.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblXaxis.Location = new System.Drawing.Point(561, 41);
+            this.lblXaxis.Location = new System.Drawing.Point(561, 50);
             this.lblXaxis.Name = "lblXaxis";
             this.lblXaxis.Size = new System.Drawing.Size(110, 23);
             this.lblXaxis.TabIndex = 8;
@@ -182,7 +185,7 @@
             // lblPrompt4
             // 
             this.lblPrompt4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrompt4.Location = new System.Drawing.Point(677, 41);
+            this.lblPrompt4.Location = new System.Drawing.Point(677, 50);
             this.lblPrompt4.Name = "lblPrompt4";
             this.lblPrompt4.Size = new System.Drawing.Size(47, 23);
             this.lblPrompt4.TabIndex = 7;
@@ -192,7 +195,7 @@
             // lblPrompt5
             // 
             this.lblPrompt5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrompt5.Location = new System.Drawing.Point(181, 35);
+            this.lblPrompt5.Location = new System.Drawing.Point(181, 44);
             this.lblPrompt5.Name = "lblPrompt5";
             this.lblPrompt5.Size = new System.Drawing.Size(74, 23);
             this.lblPrompt5.TabIndex = 9;
@@ -201,7 +204,7 @@
             // 
             // txtTitle
             // 
-            this.txtTitle.Location = new System.Drawing.Point(261, 37);
+            this.txtTitle.Location = new System.Drawing.Point(261, 46);
             this.txtTitle.Name = "txtTitle";
             this.txtTitle.Size = new System.Drawing.Size(160, 20);
             this.txtTitle.TabIndex = 10;
@@ -225,7 +228,7 @@
             // 
             // txtXaxis
             // 
-            this.txtXaxis.Location = new System.Drawing.Point(261, 63);
+            this.txtXaxis.Location = new System.Drawing.Point(261, 72);
             this.txtXaxis.Name = "txtXaxis";
             this.txtXaxis.Size = new System.Drawing.Size(160, 20);
             this.txtXaxis.TabIndex = 14;
@@ -233,7 +236,7 @@
             // lblPrompt6
             // 
             this.lblPrompt6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrompt6.Location = new System.Drawing.Point(181, 61);
+            this.lblPrompt6.Location = new System.Drawing.Point(181, 70);
             this.lblPrompt6.Name = "lblPrompt6";
             this.lblPrompt6.Size = new System.Drawing.Size(74, 23);
             this.lblPrompt6.TabIndex = 13;
@@ -242,7 +245,7 @@
             // 
             // txtYaxis
             // 
-            this.txtYaxis.Location = new System.Drawing.Point(261, 89);
+            this.txtYaxis.Location = new System.Drawing.Point(261, 98);
             this.txtYaxis.Name = "txtYaxis";
             this.txtYaxis.Size = new System.Drawing.Size(160, 20);
             this.txtYaxis.TabIndex = 16;
@@ -250,7 +253,7 @@
             // lblPrompt7
             // 
             this.lblPrompt7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrompt7.Location = new System.Drawing.Point(181, 87);
+            this.lblPrompt7.Location = new System.Drawing.Point(181, 96);
             this.lblPrompt7.Name = "lblPrompt7";
             this.lblPrompt7.Size = new System.Drawing.Size(74, 23);
             this.lblPrompt7.TabIndex = 15;
@@ -270,7 +273,7 @@
             this.grpItem.Controls.Add(this.lblPromp8);
             this.grpItem.Controls.Add(this.txtItemData);
             this.grpItem.Controls.Add(this.lblPrompt9);
-            this.grpItem.Location = new System.Drawing.Point(184, 115);
+            this.grpItem.Location = new System.Drawing.Point(184, 124);
             this.grpItem.Name = "grpItem";
             this.grpItem.Size = new System.Drawing.Size(302, 216);
             this.grpItem.TabIndex = 17;
@@ -371,7 +374,7 @@
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(427, 37);
+            this.btnUpdate.Location = new System.Drawing.Point(427, 46);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(59, 73);
             this.btnUpdate.TabIndex = 18;
@@ -381,7 +384,7 @@
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(393, 340);
+            this.btnCreate.Location = new System.Drawing.Point(393, 349);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(93, 47);
             this.btnCreate.TabIndex = 19;
@@ -391,7 +394,7 @@
             // 
             // btnLoad
             // 
-            this.btnLoad.Location = new System.Drawing.Point(184, 340);
+            this.btnLoad.Location = new System.Drawing.Point(184, 349);
             this.btnLoad.Name = "btnLoad";
             this.btnLoad.Size = new System.Drawing.Size(93, 47);
             this.btnLoad.TabIndex = 21;
@@ -399,11 +402,29 @@
             this.btnLoad.UseVisualStyleBackColor = true;
             this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
             // 
+            // mnuStrip
+            // 
+            this.mnuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.exitToolStripMenuItem});
+            this.mnuStrip.Location = new System.Drawing.Point(0, 0);
+            this.mnuStrip.Name = "mnuStrip";
+            this.mnuStrip.Size = new System.Drawing.Size(844, 24);
+            this.mnuStrip.TabIndex = 22;
+            this.mnuStrip.Text = "menuStrip1";
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
             // mainFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(844, 399);
+            this.ClientSize = new System.Drawing.Size(844, 427);
+            this.Controls.Add(this.mnuStrip);
             this.Controls.Add(this.btnLoad);
             this.Controls.Add(this.btnCreate);
             this.Controls.Add(this.btnUpdate);
@@ -424,12 +445,15 @@
             this.Controls.Add(this.lblPrompt1);
             this.Controls.Add(this.grpGraphChoices);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MainMenuStrip = this.mnuStrip;
             this.Name = "mainFrm";
             this.Text = "Olympic Graph Generator";
             this.grpGraphChoices.ResumeLayout(false);
             this.grpGraphChoices.PerformLayout();
             this.grpItem.ResumeLayout(false);
             this.grpItem.PerformLayout();
+            this.mnuStrip.ResumeLayout(false);
+            this.mnuStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -471,5 +495,7 @@
         private System.Windows.Forms.Button btnDeleteItem;
         private System.Windows.Forms.Button btnLoad;
         private System.Windows.Forms.ColorDialog colorPicker;
+        private System.Windows.Forms.MenuStrip mnuStrip;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
     }
 }

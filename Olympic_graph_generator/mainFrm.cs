@@ -49,13 +49,24 @@ namespace Olympic_graph_generator
         {
             if(graphData.GetItemList().Count > 0)
             {
-                graphFrm graphFrm = new graphFrm(graphData, CheckRadioButton());
+                graphData.gType = CheckRadioButton();
+                graphFrm graphFrm = new graphFrm(graphData);
                 graphFrm.Show();
             }
             else
             {
                 MessageBox.Show("There is no data to draw.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void btnChangeColor_Click(object sender, EventArgs e)
+        {
+            if(colorPicker.ShowDialog() == DialogResult.OK)
+            {
+                lblColorBox.BackColor = colorPicker.Color;
+                lblColorName.Text = colorPicker.Color.Name;
+            }
+
         }
 
         private void btnDeleteItem_Click(object sender, EventArgs e)
@@ -75,6 +86,7 @@ namespace Olympic_graph_generator
             testData.AddItem("Raheel", 19, Color.Orange);
             testData.AddItem("Tyler", 13, Color.LightBlue);
             testData.AddItem("Rami", 15, Color.Red);
+            testData.gType = (GraphDataModel.GraphType) 1;
             graphData = testData;
             UpdateForm(1);
         }
@@ -88,38 +100,47 @@ namespace Olympic_graph_generator
             UpdateForm(0);
         }
 
-        private int CheckRadioButton()
+        private GraphDataModel.GraphType CheckRadioButton()
         {
-            int result;
+            GraphDataModel.GraphType result = 0;
             switch (grpGraphChoices.Controls.OfType<RadioButton>().FirstOrDefault(n => n.Checked).Name)
             {
                 case "radBar":
-                    result = (int)graphFrm.GraphType.BarGraph;
+                    result = GraphDataModel.GraphType.BarGraph;
                     break;
                 case "radPie":
-                    result = (int)graphFrm.GraphType.PieChart;
+                    result = GraphDataModel.GraphType.PieChart;
                     break;
                 case "radLine":
-                    result = (int)graphFrm.GraphType.LineGraph;
-                    break;
-                default:
-                    result = -1;
+                    result = GraphDataModel.GraphType.LineGraph;
                     break;
             }
             return result;
         }
 
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
         private void lstData_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ItemModel item = graphData.GetItemList()[lstData.SelectedIndex];
-            txtItemName.Text = item.Name;
-            txtItemData.Text = item.Data.ToString();
-            lblColorBox.BackColor = item.Color;
-            lblColorName.Text = item.Color.Name;
+            try
+            {
+                ItemModel item = graphData.GetItemList()[lstData.SelectedIndex];
+                txtItemName.Text = item.Name;
+                txtItemData.Text = item.Data.ToString();
+                lblColorBox.BackColor = item.Color;
+                lblColorName.Text = item.Color.Name;
 
-            btnAddItem.Text = "Change";
-            btnDeleteItem.Visible = true;
-            btnCancelItem.Visible = true;
+                btnAddItem.Text = "Change";
+                btnDeleteItem.Visible = true;
+                btnCancelItem.Visible = true;
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         public void RefreshListBox()
@@ -158,18 +179,20 @@ namespace Olympic_graph_generator
                 if(updateValue >= 1)
                 {
                     RefreshListBox();
+                    switch (graphData.gType)
+                    {
+                        case GraphDataModel.GraphType.PieChart:
+                            radPie.Select();
+                            break;
+                        case GraphDataModel.GraphType.BarGraph:
+                            radBar.Select();
+                            break;
+                        case GraphDataModel.GraphType.LineGraph:
+                            radLine.Select();
+                            break;
+                    }
                 } 
             }
-        }
-
-        private void btnChangeColor_Click(object sender, EventArgs e)
-        {
-            if(colorPicker.ShowDialog() == DialogResult.OK)
-            {
-                lblColorBox.BackColor = colorPicker.Color;
-                lblColorName.Text = colorPicker.Color.Name;
-            }
-
         }
     }
 }

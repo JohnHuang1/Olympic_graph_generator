@@ -6,17 +6,21 @@ using System.Drawing;
 namespace Olympic_graph_generator
 {
     public class GraphDataModel
-    { 
+    {
+        public enum GraphType { PieChart, BarGraph, LineGraph };
+
         public string Title { get; set; }
         public string Xaxis { get; set; }
         public string Yaxis { get; set; }
+        public GraphType gType { get; set; }
         private List<ItemModel> dataSetList = new List<ItemModel>();
 
-        public GraphDataModel(string title = "", string yaxis = "", string xaxis = "")
+        public GraphDataModel(string title = "", string yaxis = "", string xaxis = "", GraphType graphType = 0)
         {
             Title = title;
             Yaxis = yaxis;
             Xaxis = xaxis;
+            gType = graphType;
         }
 
 
