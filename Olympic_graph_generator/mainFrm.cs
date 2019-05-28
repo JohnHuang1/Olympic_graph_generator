@@ -79,13 +79,35 @@ namespace Olympic_graph_generator
 
         private void btnLoad_Click(object sender, EventArgs e)
         {
-            GraphDataModel testData = new GraphDataModel("Pullups", "# of Pullups in a Row", "People");
-            testData.AddItem("Forest", 23, Color.Green);
-            testData.AddItem("John", 10, Color.Blue);
-            testData.AddItem("Raheel", 19, Color.Orange);
-            testData.AddItem("Tyler", 13, Color.LightBlue);
-            testData.AddItem("Rami", 15, Color.Red);
-            testData.gType = (GraphDataModel.GraphType) 1;
+            GraphDataModel testData = new GraphDataModel("Ethnic Groups in Nepal", "Percentage", "Ethnic Group");
+
+            testData.AddItem("Chhetteri", 16.6);
+            testData.AddItem("Brahman - Hill", 16.6);
+            testData.AddItem("Magar", 7.1);
+            testData.AddItem("Tharu", 6.6);
+            testData.AddItem("Tamang", 5.8);
+            testData.AddItem("Newar", 5);
+            testData.AddItem("Kami", 4.8);
+            testData.AddItem("Muslim", 4.4);
+            testData.AddItem("Yadav", 4);
+            testData.AddItem("Rai", 2.3);
+            testData.AddItem("Gurung", 2);
+            testData.AddItem("Damai / Dholii", 1.8);
+            testData.AddItem("Thakuri", 1.6);
+            testData.AddItem("Limbu", 1.5);
+            testData.AddItem("Sarki", 1.4);
+            testData.AddItem("Teli", 1.4);
+            testData.AddItem("Chamar / Harijan / Ram", 1.3);
+            testData.AddItem("Kooiri / Kushwaha", 1.2);
+            testData.AddItem("Other", 19);
+
+            Random rnd = new Random();
+            List<ItemModel> items = testData.GetItemList();
+            foreach(ItemModel item in items)
+            {
+                testData.ChangeItemAt(items.IndexOf(item), item.Name, item.Data, Color.FromArgb(rnd.Next(256), rnd.Next(256), rnd.Next(256)));
+            }
+            testData.gType = 0;
             graphData = testData;
             UpdateForm(1);
         }

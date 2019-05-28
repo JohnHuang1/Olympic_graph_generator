@@ -141,7 +141,7 @@ namespace Olympic_graph_generator
             int XnumOfInc = data.Count();
             int counter = 0;
             int textBuffer = 2;
-            int yScale = (data.Max(i => i.Data) + 9) / 10 * 10 / YnumOfInc; //Rounds up to nearest tens place divided by 10 (how much each increment increases by)
+            int yScale = (int)((data.Max(i => i.Data) + 9) / 10 * 10 / YnumOfInc); //Rounds up to nearest tens place divided by 10 (how much each increment increases by)
             Font font = new Font("Ariel", 12, GraphicsUnit.Pixel);
             Point currPoint = Point.Empty;
             Point prevPoint = Point.Empty;
@@ -229,9 +229,9 @@ namespace Olympic_graph_generator
             {
                 RectangleF rect = new RectangleF(
                     Yaxis.Base + itemAllotedSpace * counter + spacing / 2,
-                    Xaxis.Base - (Yaxis.Length / (Yaxis.Scale * Yaxis.IncrementCount) * item.Data),
+                    Xaxis.Base - (Yaxis.Length / (Yaxis.Scale * Yaxis.IncrementCount) * (float)item.Data),
                     itemAllotedSpace - spacing / 2,
-                    Yaxis.Length / (Yaxis.Scale * Yaxis.IncrementCount) * item.Data
+                    Yaxis.Length / (Yaxis.Scale * Yaxis.IncrementCount) * (float)item.Data
                     );
                 canvas.FillRectangle(new SolidBrush(item.Color), rect);
                 canvas.DrawRectangle(pen, rect.X, rect.Y, rect.Width, rect.Height);
@@ -258,7 +258,7 @@ namespace Olympic_graph_generator
             
             foreach(ItemModel item in data)
             {
-                PointF itemPoint = new PointF(Yaxis.Base + (Xaxis.Length / Xaxis.IncrementCount) * (float)(counter + .5), Xaxis.Base - (Yaxis.Length / (Yaxis.Scale * Yaxis.IncrementCount) * item.Data));
+                PointF itemPoint = new PointF(Yaxis.Base + (Xaxis.Length / Xaxis.IncrementCount) * (float)(counter + .5), (float)(Xaxis.Base - (Yaxis.Length / (Yaxis.Scale * Yaxis.IncrementCount) * item.Data)));
 
                 //DrawDot
                 RectangleF border = new RectangleF( new PointF( itemPoint.X - (dotSize / 2), itemPoint.Y - (dotSize / 2)), new Size(dotSize, dotSize));
@@ -286,7 +286,7 @@ namespace Olympic_graph_generator
             canvas.Clear(Color.White);
             SetPen(Color.Black, 2);
             Font font = new Font("Ariel", 14, GraphicsUnit.Pixel);
-            float total = data.Sum(n => n.Data);
+            float total = (float)data.Sum(n => n.Data);
             Rectangle border = new Rectangle(distBuffer, distBuffer, canvasWidth - distBuffer * 2, canvasWidth - distBuffer * 2);
             float prevAngle = 0;
             int textBuffer = 5;
@@ -296,7 +296,8 @@ namespace Olympic_graph_generator
 
             foreach (ItemModel item in data)
             {
-                float sweepAngle = item.Data / total * 360;
+                float itemPercent = (float)item.Data / total;
+                float sweepAngle = itemPercent * 360;
                 Size stringSize = TextRenderer.MeasureText(item.Name, font);
                 canvas.FillPie(new SolidBrush(item.Color), border, prevAngle, sweepAngle);
 
@@ -305,7 +306,7 @@ namespace Olympic_graph_generator
                     (float)Math.Round(canvasHeight / 2 + border.Height / 2 * Math.Sin(prevAngle * (Math.PI / 180)), 2)
                     );
 
-                canvas.DrawString(item.Data + "\n" + item.Name, font, new SolidBrush(Color.Black),
+                canvas.DrawString(string.Format("{0}% ({1:##.##})\n{2}", itemPercent, item.Data, item.Name), font, new SolidBrush(Color.Black),
                     (float)Math.Round(canvasWidth / 2 + ((border.Width / 2 + stringSize.Width / 2 + textBuffer) * Math.Cos((prevAngle + (sweepAngle / 2)) * (Math.PI / 180))), 2),
                     (float)Math.Round(canvasHeight / 2 + ((border.Height / 2 + stringSize.Height / 2 + textBuffer) * Math.Sin((prevAngle + (sweepAngle / 2)) * (Math.PI / 180))), 2),
                     format
