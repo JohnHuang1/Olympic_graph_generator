@@ -24,11 +24,11 @@ namespace Olympic_graph_generator
         }
 
 
-        public void AddItem(string name, int data, Color color)
+        public void AddItem(string name, double data, Color color)
         {
             dataSetList.Add(new ItemModel(name, data, color));
         }
-        public void AddItem(string name, int data)
+        public void AddItem(string name, double data)
         {
             dataSetList.Add(new ItemModel(name, data, Color.Blue));
         }
@@ -58,7 +58,7 @@ namespace Olympic_graph_generator
             dataSetList.RemoveAt(index);
         }
 
-        public void ChangeItemAt(int index, string name, int data, Color color)
+        public void ChangeItemAt(int index, string name, double data, Color color)
         {
             ItemModel item = dataSetList.ElementAt(index);
             item.Name = name;
