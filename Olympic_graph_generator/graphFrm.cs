@@ -44,7 +44,7 @@ namespace Olympic_graph_generator
         GraphDataModel graphData = new GraphDataModel();
         Graphics canvas;
         Pen pen;
-        const int distBuffer = 50;
+        int distBuffer = 100;
         int canvasHeight, canvasWidth;
 
         public GraphDataModel.GraphType GType;
@@ -115,12 +115,18 @@ namespace Olympic_graph_generator
             switch (GType)
             {
                 case GraphDataModel.GraphType.BarGraph:
+                    canvasHeight = lblPanel.Height;
+                    canvasWidth = lblPanel.Width;
                     DrawBarGraph(graphData.GetItemList());
                     break;
                 case GraphDataModel.GraphType.PieChart:
+                    canvasHeight = lblPanel.Height;
+                    canvasWidth = lblPanel.Width;
                     DrawPieChart(graphData.GetItemList());
                     break;
                 case GraphDataModel.GraphType.LineGraph:
+                    canvasHeight = lblPanel.Height;
+                    canvasWidth = lblPanel.Width;
                     DrawLineGraph(graphData.GetItemList());
                     break;
                 default:
@@ -283,11 +289,15 @@ namespace Olympic_graph_generator
 
         private void DrawPieChart(List<ItemModel> data)
         {
+            canvas.ResetTransform();
+            canvas.TranslateTransform(canvasWidth / 2, canvasHeight / 2);
+            canvas.RotateTransform(-90);
             canvas.Clear(Color.White);
             SetPen(Color.Black, 2);
             Font font = new Font("Ariel", 14, GraphicsUnit.Pixel);
             float total = (float)data.Sum(n => n.Data);
-            Rectangle border = new Rectangle(distBuffer, distBuffer, canvasWidth - distBuffer * 2, canvasWidth - distBuffer * 2);
+            int graphBuffer = data.Max(n => TextRenderer.MeasureText(string.Format("{0}% {1}", n.Data, n.Name), font).Width);
+            Rectangle border = new Rectangle( -canvasWidth / 2 + graphBuffer, -canvasHeight / 2 + graphBuffer, canvasWidth - graphBuffer * 2, canvasWidth - graphBuffer * 2);
             float prevAngle = 0;
             int textBuffer = 5;
             StringFormat format = new StringFormat();
@@ -298,25 +308,50 @@ namespace Olympic_graph_generator
             {
                 float itemPercent = (float)item.Data / total;
                 float sweepAngle = itemPercent * 360;
-                Size stringSize = TextRenderer.MeasureText(item.Name, font);
                 canvas.FillPie(new SolidBrush(item.Color), border, prevAngle, sweepAngle);
-
-                canvas.DrawLine(pen, canvasWidth / 2, canvasHeight / 2,
-                    (float)Math.Round(canvasWidth / 2 + border.Width / 2 * Math.Cos(prevAngle * (Math.PI / 180)), 2),
-                    (float)Math.Round(canvasHeight / 2 + border.Height / 2 * Math.Sin(prevAngle * (Math.PI / 180)), 2)
-                    );
-
-                canvas.DrawString(string.Format("{0}% ({1:##.##})\n{2}", itemPercent, item.Data, item.Name), font, new SolidBrush(Color.Black),
-                    (float)Math.Round(canvasWidth / 2 + ((border.Width / 2 + stringSize.Width / 2 + textBuffer) * Math.Cos((prevAngle + (sweepAngle / 2)) * (Math.PI / 180))), 2),
-                    (float)Math.Round(canvasHeight / 2 + ((border.Height / 2 + stringSize.Height / 2 + textBuffer) * Math.Sin((prevAngle + (sweepAngle / 2)) * (Math.PI / 180))), 2),
-                    format
-                    );
 
                 prevAngle += sweepAngle;
             }
+            //canvas.DrawPie(pen, border, 0, 360);
+            prevAngle = 0;
+            foreach (ItemModel item in data)
+            {
+                float itemPercent = (float)item.Data / total;
+                float sweepAngle = itemPercent * 360;
+                string text = string.Format("{0}% {1}", item.Data, item.Name);
+                Size stringSize = TextRenderer.MeasureText(text, font);
 
-            SetPen(2);
-            canvas.DrawPie(pen, border, 0, 360);
+                
+
+                if(prevAngle + sweepAngle / 2 < 180)
+                {
+                    canvas.DrawLine(pen, 0, 0, border.Width / 2, 0);
+                    canvas.RotateTransform(sweepAngle / 2);
+                    canvas.DrawString(text, font, new SolidBrush(Color.Black),
+                        border.Width / 2 + stringSize.Width / 2 + textBuffer,
+                        -stringSize.Height / 2,
+                        format
+                        );
+                    canvas.RotateTransform(sweepAngle / 2);
+                }
+                else
+                {
+                    canvas.ResetTransform();
+                    canvas.TranslateTransform(canvasWidth / 2, canvasHeight / 2);
+
+                    canvas.RotateTransform(-270 + prevAngle);
+                    canvas.DrawLine(pen, 0, 0, -border.Width / 2, 0);
+
+                    canvas.RotateTransform(sweepAngle / 2);
+                    canvas.DrawString(text, font, new SolidBrush(Color.Black),
+                        -(border.Width / 2 + stringSize.Width / 2 + textBuffer),
+                        -stringSize.Height / 2,
+                        format
+                        );
+                }
+
+                prevAngle += sweepAngle;
+            }
         }
 
         private void SetPen(Color color, int width)
@@ -337,9 +372,6 @@ namespace Olympic_graph_generator
             lblTitle.Text = graphData.Title;
             lblYaxis.NewText = graphData.Yaxis;
             lblXaxis.Text = graphData.Xaxis;
-
-            canvasHeight = lblPanel.Height;
-            canvasWidth = lblPanel.Width;
         }
 
     }
