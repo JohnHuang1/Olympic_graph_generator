@@ -193,7 +193,9 @@ namespace Olympic_graph_generator
                     SizeF stringSize = TextRenderer.MeasureText(textToWrite, font);
 
                     //Increment Label
+                    canvas.TranslateTransform(canvasWidth / 2, canvasHeight / 2);
                     canvas.RotateTransform(-90);
+                    canvas.TranslateTransform( - canvasWidth / 2, - canvasHeight / 2);
                     canvas.DrawString(textToWrite, font, new SolidBrush(Color.Black), stringSize.Width < distBuffer ? distBuffer + textBuffer - stringSize.Width : 0, i - ((canvasWidth - distBuffer * 2) / XnumOfInc / 2) - (stringSize.Height / 2));
                     //canvas.DrawString(textToWrite, font, new SolidBrush(Color.Black), (i - (canvasWidth - distBuffer * 2) / XnumOfInc / 2) - (stringSize.Width / 2) + textBuffer, canvasHeight - distBuffer + (lineSize / 2) + textBuffer);
                     canvas.ResetTransform();
